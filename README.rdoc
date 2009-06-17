@@ -4,6 +4,12 @@ gem install acts_as_censored
 ###Usage
 ===========================================================
 
-class Comment
+class Comment < ActiveRecord::Base
   acts_as_censored :body # removes naughty words from body
+end
+
+# custom censor value
+
+class Comment < ActiveRecord::Base
+  acts_as_censored :body, :with => "[Shame on you]"
 end
