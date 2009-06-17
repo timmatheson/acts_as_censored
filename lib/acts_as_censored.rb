@@ -6,10 +6,11 @@ module ActsAsCensored
   end
   
   module ClassMethods
-    def acts_as_censored(*args)
+    def acts_as_censored(*args, options={})
+      bleep_value = options[:with].nil? ? '&%$!@' : options[:with]
       args.each do |column|
-        before_create do |record|
-          record[column] = record[column].gsub!(RESTRICTED_WORDS,'&%$!@')
+        before_save do |record|
+          record[column] = record[column].gsub!(RESTRICTED_WORDS,bleep_value)
         end
       end
     end

@@ -1,0 +1,9 @@
+###Intstallation
+gem install acts_as_censored
+
+###Usage
+===========================================================
+
+class Comment
+  acts_as_censored :body # removes naughty words from body
+end
